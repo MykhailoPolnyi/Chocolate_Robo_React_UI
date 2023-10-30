@@ -11,13 +11,13 @@ const http = axios.create({
 });
 
 export const getRotation = async (baseUrl, direction) => {
-    console.log(`${baseUrl}?rotate_direction=${direction}`)
-    const rawResponse = await http.get(`${baseUrl}?rotate_direction=${direction}`);
+    console.log(`${baseUrl}/?action=${direction}`)
+    const rawResponse = await http.get(`${baseUrl}/command?action=${direction}`);
     return rawResponse.data;
 }
 
 export const getRotationEnd = async (baseUrl) => {
-    console.log(`${baseUrl}?stop=true`)
-    const rawResponse = await http.get(`${baseUrl}?stop=true`);
+    console.log(`${baseUrl}?action=stop`)
+    const rawResponse = await http.get(`${baseUrl}/command?action=stop`);
     return rawResponse.data;
 }
