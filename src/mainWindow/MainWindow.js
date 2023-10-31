@@ -67,13 +67,13 @@ function MainWindow() {
         </tr>
         <tr>
             <td>
-              <ArrowButton onMouseDown={handleDownStart} onClick={handleDownEnd}>
+              <ArrowButton onMouseDown={handleLeftStart} onClick={handleLeftEnd}>
                 <img alt="left" src={arrowLeft}></img>
               </ArrowButton>
             </td>
             <td></td>
             <td>
-              <ArrowButton onMouseDown={handleLeftStart} onClick={handleLeftEnd}>
+              <ArrowButton onMouseDown={handleRightStart} onClick={handleRightEnd}>
                 <img alt="right" src={arrowRight}></img>
               </ArrowButton>
             </td>
@@ -81,7 +81,7 @@ function MainWindow() {
         <tr>
             <td></td>
             <td>
-              <ArrowButton onMouseDown={handleRightStart} onClick={handleRightEnd}>
+              <ArrowButton onMouseDown={handleDownStart} onClick={handleDownEnd}>
                 <img alt="down" src={arrowDown}></img>
               </ArrowButton>
             </td>
