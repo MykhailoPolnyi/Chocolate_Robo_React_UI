@@ -60,7 +60,7 @@ function MainWindow() {
             <th></th>
             <th>
               <ArrowButton onMouseDown={handleUpStart} onClick={handleUpEnd}>
-                <img alt="down" src={arrowUp}></img>
+                <img alt="up" src={arrowUp}></img>
               </ArrowButton>
             </th>
             <th></th>
@@ -68,13 +68,13 @@ function MainWindow() {
         <tr>
             <td>
               <ArrowButton onMouseDown={handleDownStart} onClick={handleDownEnd}>
-                <img src={arrowLeft}></img>
+                <img alt="left" src={arrowLeft}></img>
               </ArrowButton>
             </td>
             <td></td>
             <td>
               <ArrowButton onMouseDown={handleLeftStart} onClick={handleLeftEnd}>
-                <img src={arrowRight}></img>
+                <img alt="right" src={arrowRight}></img>
               </ArrowButton>
             </td>
         </tr>
@@ -82,7 +82,7 @@ function MainWindow() {
             <td></td>
             <td>
               <ArrowButton onMouseDown={handleRightStart} onClick={handleRightEnd}>
-                <img src={arrowDown}></img>
+                <img alt="down" src={arrowDown}></img>
               </ArrowButton>
             </td>
             <td></td>
