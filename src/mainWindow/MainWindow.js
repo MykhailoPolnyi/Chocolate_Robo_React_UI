@@ -51,14 +51,16 @@ function MainWindow() {
       <input type="text" onChange={handleUrlChange}/>
       <IFrameRotate>
         <iframe width="320px" 
-          height="240px" src={streamUrl+"/stream"} />
+          height="240px" 
+          src={streamUrl+"/stream"} 
+          title="stream"/>
       </IFrameRotate>
       <table>
         <tr>
             <th></th>
             <th>
               <ArrowButton onMouseDown={handleUpStart} onClick={handleUpEnd}>
-                <img src={arrowUp}></img>
+                <img alt="down" src={arrowUp}></img>
               </ArrowButton>
             </th>
             <th></th>
