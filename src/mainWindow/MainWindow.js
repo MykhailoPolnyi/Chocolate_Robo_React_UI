@@ -5,7 +5,7 @@ import arrowDown from '../res/arrowDown.png';
 import arrowLeft from '../res/arrowLeft.png';
 import arrowRight from '../res/arrowRight.png';
 import { useState } from 'react';
-import { getRotation, getRotationEnd } from '../controllers/apiControllers';
+import { getRotationStart, getRotationStop } from '../controllers/apiControllers';
 
 function MainWindow() {
   const [streamUrl, setStreamUrl] = useState();
@@ -15,35 +15,41 @@ function MainWindow() {
   }
 
   const handleUpStart = () => {
-    getRotation(streamUrl.slice(0, streamUrl.length-7), "up")
+    getRotationStart(streamUrl, "up")
   } 
 
   const handleUpEnd = () => {
-    getRotationEnd(streamUrl.slice(0, streamUrl.length-7))
+    getRotationStop(streamUrl)
   } 
   
   const handleDownStart = () => {
-    getRotation(streamUrl.slice(0, streamUrl.length-7), "down")
+    getRotationStart(streamUrl, "down")
   }
 
   const handleDownEnd = () => {
-    getRotationEnd(streamUrl.slice(0, streamUrl.length-7))
+    getRotationStop(streamUrl)
   } 
   
   const handleLeftStart = () => {
-    getRotation(streamUrl.slice(0, streamUrl.length-7), "left")
+    getRotationStart(streamUrl, "left")
   } 
 
   const handleLeftEnd = () => {
-    getRotationEnd(streamUrl.slice(0, streamUrl.length-7))
+    getRotationStop(streamUrl)
   } 
   
   const handleRightStart = () => {
-    getRotation(streamUrl.slice(0, streamUrl.length-7), "right")
+    const streamUrlTemp = streamUrl.copy();
+    getRotationStart(streamUrlTemp, "right").then(
+      setStreamUrl(streamUrlTemp)
+    )
   } 
 
   const handleRightEnd = () => {
-    getRotationEnd(streamUrl.slice(0, streamUrl.length-7))
+    const streamUrlTemp = streamUrl.copy();
+    getRotationStop(streamUrl).then(
+      setStreamUrl(streamUrlTemp)
+    )
   } 
 
   return (
@@ -51,36 +57,38 @@ function MainWindow() {
       <input type="text" onChange={handleUrlChange}/>
       <IFrameRotate>
         <iframe width="320px" 
-          height="240px" src={streamUrl} />
+          height="240px" 
+          src={streamUrl+"/stream"} 
+          title="stream"/>
       </IFrameRotate>
       <table>
         <tr>
             <th></th>
             <th>
               <ArrowButton onMouseDown={handleUpStart} onClick={handleUpEnd}>
-                <img src={arrowUp}></img>
+                <img alt="up" src={arrowUp}></img>
               </ArrowButton>
             </th>
             <th></th>
         </tr>
         <tr>
             <td>
-              <ArrowButton onMouseDown={handleDownStart} onClick={handleDownEnd}>
-                <img src={arrowLeft}></img>
+              <ArrowButton onMouseDown={handleLeftStart} onClick={handleLeftEnd}>
+                <img alt="left" src={arrowLeft}></img>
               </ArrowButton>
             </td>
             <td></td>
             <td>
-              <ArrowButton onMouseDown={handleLeftStart} onClick={handleLeftEnd}>
-                <img src={arrowRight}></img>
+              <ArrowButton onMouseDown={handleRightStart} onClick={handleRightEnd}>
+                <img alt="right" src={arrowRight}></img>
               </ArrowButton>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-              <ArrowButton onMouseDown={handleRightStart} onClick={handleRightEnd}>
-                <img src={arrowDown}></img>
+              <ArrowButton onMouseDown={handleDownStart} onClick={handleDownEnd}>
+                <img alt="down" src={arrowDown}></img>
               </ArrowButton>
             </td>
             <td></td>
