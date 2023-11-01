@@ -39,17 +39,11 @@ function MainWindow() {
   } 
   
   const handleRightStart = () => {
-    const streamUrlTemp = streamUrl.copy();
-    getRotationStart(streamUrlTemp, "right").then(
-      setStreamUrl(streamUrlTemp)
-    )
+    getRotationStart(streamUrl, "right")
   } 
 
   const handleRightEnd = () => {
-    const streamUrlTemp = streamUrl.copy();
-    getRotationStop(streamUrl).then(
-      setStreamUrl(streamUrlTemp)
-    )
+    getRotationStop(streamUrl)
   } 
 
   return (
